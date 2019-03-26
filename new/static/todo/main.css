@@ -21,10 +21,15 @@ body {
 	margin-top: 20px;
 }
 .todo-completed {
-	text-decoration: line-through;
-	background: rgba(149, 165, 166, .3);
+	text-decoration: line-through underline;
+	background: rgba(15, 206, 219, 0.3);
 }
 footer {
 	margin-top: 20px;
 	color: white;
+}
+
+.list-group-item{
+    color:blue;
+    
 }

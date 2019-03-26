@@ -13,6 +13,8 @@ def home(request):
 
     }
     return render(request, 'todo/home.html',context)
+
+
 @require_POST
 
 def addTodo(request):
@@ -22,4 +24,20 @@ def addTodo(request):
         new_todo=Todo(text=request.POST['text'])
         new_todo.save()
     # print(request.POST['text'])
+    return redirect('home')
+
+
+def completeTodo(request, todo_id):
+    todo=Todo.objects.get(pk=todo_id)
+    todo.complete=True
+    todo.save()
+
+    return redirect('home')
+
+def deleteCompleted(request):
+    Todo.objects.filter(complete__exact=True).delete()
+    return redirect('home')
+
+def deleteAdd(request):
+    Todo.objects.all().delete()
     return redirect('home')
